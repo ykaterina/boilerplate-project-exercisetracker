@@ -15,13 +15,6 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 
-// router.post("/mongoose-model", function (req, res, next) {
-//   // try to create a new instance based on their model
-//   // verify it's correctly defined in some way
-//   let p;
-//   p = new Person(req.body);
-//   res.json(p);
-// });
 const Tracker = require("./App.js").TrackerModel;
 
 const addUser = require("./App.js").addNewUser;
@@ -72,15 +65,6 @@ app.post("/api/users/:_id/exercises", function(req, res, next){
 
 app.get("/api/users", function(req, res) {
   Tracker.find({}, function(err, users) {
-    var userMap = [];
-
-    // users.forEach(function(user) {
-    //   userMap.push({
-    //     username: user.username,
-    //     _id: user._id
-    //   });
-    // });
-
     res.json(users);  
   });
 });
